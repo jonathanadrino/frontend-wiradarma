@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/* `dark:` targets the explicit theme attribute, not the OS setting */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Semantic colour tokens. Components only use these names; the values swap per theme.
+ * Palette stays inside the brief: Deep Navy, Slate Grey, Charcoal, stark White.
+ */
+@theme inline {
+  --color-surface: var(--surface);     /* page / base section */
+  --color-surface-2: var(--surface-2); /* alternate section */
+  --color-surface-3: var(--surface-3); /* third section tone */
+  --color-raise: var(--raise);         /* cards, hovered tiles */
+  --color-fg: var(--fg);               /* headings, primary text, primary button fill */
+  --color-fg-muted: var(--fg-muted);   /* body copy */
+  --color-fg-subtle: var(--fg-subtle); /* labels, eyebrows */
+  --color-line: var(--line);           /* hairlines */
+
+  --font-sans: var(--font-roboto), "Helvetica Neue", Arial, sans-serif;
+  --font-rigid: var(--font-roboto), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, Menlo, monospace;
+
+  --animate-drift: drift 60s linear infinite;
+
+  @keyframes drift {
+    from { transform: translate3d(0, 0, 0) scale(1.08); }
+    50%  { transform: translate3d(-2%, -1.5%, 0) scale(1.12); }
+    to   { transform: translate3d(0, 0, 0) scale(1.08); }
+  }
+}
+
+/* Light — default. Bright, open, white-paper feel. */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-2: #f1f4f8;
+  --surface-3: #f8f9fb;
+  --raise: #ffffff;
+  --fg: #0f1b2d;
+  --fg-muted: #46505e;
+  --fg-subtle: #6f7884;
+  --line: rgb(15 27 45 / 0.12);
+  --accent-a: #8ea3bf; /* calm slate-blue, light end */
+  --accent-b: #2c4566; /* calm slate-blue, deep end (near navy) */
+
+  /* photo treatment */
+  --photo-filter: grayscale(0.5) saturate(0.85) contrast(1.04) brightness(1.02);
+  --tint-color: #2b4466;
+  --tint-strength: 0.28;
+  --scrim-strength: 1.9;
+  --grain-opacity: 0.035;
+}
+
+/* Dark — the original night-time look */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #0b0f16;
+  --surface-2: #0f1b2d;
+  --surface-3: #1e2126;
+  --raise: #16243a;
+  --fg: #ffffff;
+  --fg-muted: #a3abb5;
+  --fg-subtle: #7b8490;
+  --line: rgb(255 255 255 / 0.12);
+  --accent-a: #4d6585;
+  --accent-b: #b4c4da;
+
+  --photo-filter: grayscale(1) contrast(1.12);
+  --tint-color: #0f1b2d;
+  --tint-strength: 1;
+  --scrim-strength: 1;
+  --grain-opacity: 0.06;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--surface);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--surface);
+}
+
+/* Display type: rigid Roboto Medium with tight tracking (headings, figures, titles) */
+@utility font-display {
+  font-family: var(--font-roboto), "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+/* Technical label: Roboto Mono caps, used for every eyebrow / index / tag */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Photo treatment (see <Photo />): theme decides filter, tint and scrim strength */
+.photo-filter { filter: var(--photo-filter); }
+.photo-tint {
+  background: var(--tint-color);
+  mix-blend-mode: multiply;
+  opacity: calc(var(--tint, 0.4) * var(--tint-strength));
+}
+.photo-scrim {
+  background: var(--surface);
+  opacity: min(0.88, calc(var(--scrim, 0) * var(--scrim-strength)));
+}
+
+/* Form fields: underline-only, ledger style */
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0.75rem 0;
+  color: var(--fg);
+  font-size: 1rem;
+  border-radius: 0;
+  transition: border-color 200ms ease;
+}
+.field::placeholder { color: var(--fg-subtle); }
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--fg);
+}
+select.field { appearance: none; cursor: pointer; }
+select.field option { background: var(--surface); color: var(--fg); }
+
+/* Film grain over the whole page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scroll reveal (driven by <Reveal />) */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 1s cubic-bezier(0.2, 0.7, 0.1, 1),
+    transform 1.1s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Minimum-term bar (Rules of Engagement): one calm slate-blue gradient spread across 12 segments,
+   each segment fills left-to-right with a stagger once revealed */
+.tl-seg {
+  background-image: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  background-size: 1200% 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.is-visible .tl-seg { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .tl-seg { transform: none; }
+}
+
+/* Header reading-progress bar: same calm gradient, no glow */
+.progress-fill {
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  transition: width 120ms linear;
+}
+
+/* Hero headline: each line rises out of a mask on load */
+.line-mask { display: block; overflow: hidden; padding-bottom: 0.08em; }
+.line-mask > span {
+  display: block;
+  animation: rise 1.3s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+.fade-in { animation: fade 1.4s ease both; }
+
+@keyframes rise {
+  from { transform: translate3d(0, 105%, 0); }
+  to   { transform: none; }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
