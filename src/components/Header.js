@@ -1,33 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/content/site";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
+  const barRef = useRef(null);
+  const trackRef = useRef(null);
 
-  // Solid background + reading progress
+  // Solid background + reading progress.
+  // The bar is written straight to the DOM as a GPU transform once per frame — no React re-render,
+  // no layout, no CSS transition lagging behind the scroll position.
   useEffect(() => {
     let raf = 0;
+    // Scrollable distance is cached and only re-measured when the page or viewport changes size,
+    // so a scroll frame reads nothing but scrollY (reading scrollHeight every frame forces layout).
+    let max = 1;
+    const measure = () => {
+      max = document.documentElement.scrollHeight - window.innerHeight;
+    };
     const update = () => {
       raf = 0;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setScrolled(window.scrollY > 24);
-      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+      const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
+      if (trackRef.current) trackRef.current.setAttribute("aria-valuenow", String(Math.round(p * 100)));
+      setScrolled(window.scrollY > 24); // bails out when unchanged, so this rarely re-renders
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
     };
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+    // Page height also changes without a window resize (images loading, mobile menu, fonts).
+    const ro = new ResizeObserver(onResize);
+    ro.observe(document.body);
+
+    measure();
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
+      ro.disconnect();
       cancelAnimationFrame(raf);
     };
   }, []);
@@ -135,14 +155,15 @@ export default function Header() {
 
       {/* Reading progress */}
       <div
+        ref={trackRef}
         className="pointer-events-none absolute inset-x-0 -bottom-px h-0.5"
         role="progressbar"
         aria-label="Page scroll progress"
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-valuenow={Math.round(progress * 100)}
+        aria-valuenow={0}
       >
-        <div className="progress-fill h-full" style={{ width: `${progress * 100}%` }} />
+        <div ref={barRef} className="progress-fill h-full w-full" />
       </div>
 
       {open && (

@@ -183,7 +183,9 @@ body::before {
 /* Header reading-progress bar: same calm gradient, no glow */
 .progress-fill {
   background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
-  transition: width 120ms linear;
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform; /* own compositor layer: updates never trigger layout or paint */
 }
 
 /* Hero headline: each line rises out of a mask on load */
