@@ -36,10 +36,11 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${roboto.variable} ${robotoMono.variable} antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body className="min-h-screen">
+        {/* Kept out of <head> on purpose: browser extensions (popup blockers etc.) inject their own
+            <script> tags into <head> before React hydrates, which React would then mismatch against
+            this one. As the first node in <body> it still runs before anything is painted. */}
+        <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeScript }} />
         <noscript>
           <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
         </noscript>

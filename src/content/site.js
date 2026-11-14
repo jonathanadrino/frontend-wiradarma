@@ -91,16 +91,16 @@ export const capabilities = {
 export const principal = {
   eyebrow: "Leadership",
   header: "Executive Command.",
-  body: "The Wiradarma Group is led by its Principal, a former military commander and corporate CEO with absolute mastery of the Indonesian regulatory and operational terrain.",
+  body: "The Wiradarma Group is led by its Principal, a former military commander and the current CEO of BML Group, with absolute mastery of the Indonesian regulatory and operational terrain.",
   // Article body — plain prose built only from the stated credentials
   article: [
-    "As former Chief Executive Officer of BML Group (PT Bangun Minanga Lestari), the Principal scaled master-planned townships and executed over Rp 400 billion in distressed asset value creation.",
+    "The Principal currently serves as Chief Executive Officer of BML Group (PT Bangun Minanga Lestari), leading the development of master-planned townships and over Rp 400 billion in distressed asset value creation to date.",
     "The Principal is a graduate of the Indonesian Military Academy (Akmil, class of 2005) and retired from the Indonesian Army (TNI) with the rank of Infantry Major.",
     "Academic training includes a Master of Arts in Security Studies, focused on civil-military relations, from the U.S. Naval Postgraduate School in Monterey, California. Advanced strategic training with the U.S. Armed Forces includes Airborne Ranger qualification, the Marine Corps Command and Staff College, and the Combined Strategic Intelligence Training Program.",
   ],
   // Short factual summary shown beside the article
   summary: [
-    { label: "Corporate", value: "Former CEO, BML Group (PT Bangun Minanga Lestari)" },
+    { label: "Corporate", value: "Chief Executive Officer (current), BML Group (PT Bangun Minanga Lestari)" },
     { label: "Military", value: "Indonesian Military Academy, Akmil '05 · Retired Infantry Major (TNI)" },
     { label: "Education", value: "M.A. Security Studies, U.S. Naval Postgraduate School" },
     { label: "Training", value: "Airborne Ranger · USMC Command and Staff College · Combined Strategic Intelligence Training Program" },
