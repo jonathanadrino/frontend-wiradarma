@@ -1,14 +1,16 @@
-import { hero, site } from "@/content/site";
+import { site } from "@/content/site";
 import Photo from "@/components/Photo";
 import { photos } from "@/assets/images";
 
-export default function Hero() {
+export default function Hero({ t }) {
+  const { hero } = t;
   return (
     <section id="top" className="relative isolate flex min-h-svh flex-col overflow-hidden bg-surface">
       {/* Backdrop: structural-steel photograph (slow push-in), optional video */}
       <div className="absolute inset-0 -z-10">
         <Photo
           photo={photos.hero}
+          alt={t.alt.hero}
           preload
           tintOpacity={0.4}
           className="absolute inset-0 animate-drift"

@@ -1,4 +1,3 @@
-import { engagement } from "@/content/site";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 
@@ -22,8 +21,9 @@ function Mark({ ok }) {
   );
 }
 
-export default function Engagement() {
-  const { terms, eligibility } = engagement;
+export default function Engagement({ t }) {
+  const { engagement } = t;
+  const { terms, term, eligibility } = engagement;
 
   return (
     <section id="engagement" className="bg-surface-2 text-fg">
@@ -67,11 +67,11 @@ export default function Engagement() {
 
         {/* Minimum term + eligibility */}
         <div className="mt-24 grid gap-16 lg:grid-cols-12">
-          {/* 12-month minimum term — neon segments fill left-to-right once revealed */}
+          {/* 12-month minimum term — segments fill left-to-right once revealed */}
           <Reveal className="lg:col-span-7">
             <div className={`${label} flex items-center justify-between text-fg-subtle`}>
-              <span>Minimum Term</span>
-              <span>12 Months</span>
+              <span>{term.label}</span>
+              <span>{term.total}</span>
             </div>
 
             <div className="mt-8 grid grid-cols-12 gap-1">
@@ -95,12 +95,12 @@ export default function Engagement() {
 
             <div className="mt-6 flex items-start justify-between gap-6 text-sm">
               <div>
-                <p className={`${label} text-fg`}>Month 01</p>
-                <p className="mt-1 text-fg-muted">Mandate commences</p>
+                <p className={`${label} text-fg`}>{term.start}</p>
+                <p className="mt-1 text-fg-muted">{term.startNote}</p>
               </div>
               <div className="text-right">
-                <p className={`${label} text-fg`}>Month 12</p>
-                <p className="mt-1 text-fg-muted">Minimum term fulfilled</p>
+                <p className={`${label} text-fg`}>{term.end}</p>
+                <p className="mt-1 text-fg-muted">{term.endNote}</p>
               </div>
             </div>
           </Reveal>
@@ -108,7 +108,7 @@ export default function Engagement() {
           {/* Eligibility */}
           <Reveal delay={120} className="grid gap-10 sm:grid-cols-2 lg:col-span-5">
             <div>
-              <p className={`${label} text-fg`}>We work with</p>
+              <p className={`${label} text-fg`}>{eligibility.acceptedLabel}</p>
               <ul className="mt-5 space-y-3">
                 {eligibility.accepted.map((a) => (
                   <li key={a} className="flex gap-3 text-[15px] leading-snug">
@@ -119,7 +119,7 @@ export default function Engagement() {
               </ul>
             </div>
             <div>
-              <p className={`${label} text-fg-subtle`}>We decline</p>
+              <p className={`${label} text-fg-subtle`}>{eligibility.declinedLabel}</p>
               <ul className="mt-5 space-y-3">
                 {eligibility.declined.map((d) => (
                   <li key={d} className="flex gap-3 text-[15px] leading-snug text-fg-muted">
@@ -134,12 +134,12 @@ export default function Engagement() {
 
         {/* Closing line */}
         <Reveal className="mt-20 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className={`${label} text-fg-subtle`}>All terms apply to every mandate</p>
+          <p className={`${label} text-fg-subtle`}>{engagement.closing}</p>
           <a
             href="#inquiries"
             className="group inline-flex items-center justify-between gap-4 bg-fg px-7 py-4 text-sm font-medium tracking-[0.12em] text-surface uppercase transition-opacity hover:opacity-90"
           >
-            Request Engagement Terms
+            {engagement.cta}
             <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
               →
             </span>

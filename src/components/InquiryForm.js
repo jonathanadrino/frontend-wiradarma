@@ -1,22 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { inquiry } from "@/content/site";
 import { submitInquiry } from "@/lib/submitInquiry";
 
 const EMPTY = { name: "", entity: "", aum: "", nature: "", message: "", website: "" };
 
-function Label({ htmlFor, children, optional, required }) {
+function Label({ htmlFor, children, optional, required, f }) {
   return (
-    <label htmlFor={htmlFor} className="eyebrow flex items-baseline justify-between text-fg-muted">
+    <label htmlFor={htmlFor} className="eyebrow flex items-baseline justify-between gap-4 text-fg-muted">
       <span>{children}</span>
-      {required && <span className="text-fg-subtle">Required</span>}
-      {optional && <span className="text-fg-subtle">Optional</span>}
+      {required && <span className="shrink-0 text-fg-subtle">{f.required}</span>}
+      {optional && <span className="shrink-0 text-fg-subtle">{f.optional}</span>}
     </label>
   );
 }
 
-export default function InquiryForm() {
+export default function InquiryForm({ locale, inquiry }) {
+  const f = inquiry.form;
   const [values, setValues] = useState(EMPTY);
   const [status, setStatus] = useState("idle"); // idle | submitting | sent | error
 
@@ -27,7 +27,7 @@ export default function InquiryForm() {
     if (values.website) return; // honeypot tripped
     setStatus("submitting");
     try {
-      await submitInquiry(values);
+      await submitInquiry({ ...values, locale });
       setStatus("sent");
       setValues(EMPTY);
     } catch (err) {
@@ -39,9 +39,9 @@ export default function InquiryForm() {
   if (status === "sent") {
     return (
       <div className="fade-in py-6" role="status">
-        <p className="eyebrow text-fg-muted">Thank you</p>
+        <p className="eyebrow text-fg-muted">{f.thanks}</p>
         <p className="mt-6 font-display text-3xl leading-tight tracking-[-0.03em] text-fg">
-          Your inquiry has been received.
+          {f.received}
         </p>
         <p className="mt-6 max-w-lg leading-relaxed text-fg-muted">{inquiry.disclaimer}</p>
       </div>
@@ -52,10 +52,10 @@ export default function InquiryForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-10" noValidate={false}>
-      <div className="grid gap-10 sm:grid-cols-2">
+      <div className="grid gap-10 sm:grid-cols-2 sm:items-end">
         <div>
-          <Label htmlFor="name" required>
-            Name
+          <Label htmlFor="name" required f={f}>
+            {f.name}
           </Label>
           <input
             id="name"
@@ -68,8 +68,8 @@ export default function InquiryForm() {
           />
         </div>
         <div>
-          <Label htmlFor="entity" required>
-            Corporate Entity / Fund Name
+          <Label htmlFor="entity" required f={f}>
+            {f.entity}
           </Label>
           <input
             id="entity"
@@ -83,31 +83,31 @@ export default function InquiryForm() {
         </div>
       </div>
 
-      <div className="grid gap-10 sm:grid-cols-2">
+      <div className="grid gap-10 sm:grid-cols-2 sm:items-end">
         <div>
-          <Label htmlFor="aum" optional>
-            Capital Deployed / AUM
+          <Label htmlFor="aum" optional f={f}>
+            {f.aum}
           </Label>
           <select id="aum" name="aum" className="field" value={values.aum} onChange={set("aum")}>
-            <option value="">Select range</option>
+            <option value="">{f.aumPlaceholder}</option>
             {inquiry.aumOptions.map((o) => (
-              <option key={o} value={o}>
-                {o}
+              <option key={o.value} value={o.value}>
+                {o.label}
               </option>
             ))}
           </select>
         </div>
         <div>
-          <Label htmlFor="nature" required>
-            Nature of Inquiry
+          <Label htmlFor="nature" required f={f}>
+            {f.nature}
           </Label>
           <select id="nature" name="nature" className="field" required value={values.nature} onChange={set("nature")}>
             <option value="" disabled>
-              Select mandate
+              {f.naturePlaceholder}
             </option>
             {inquiry.natureOptions.map((o) => (
-              <option key={o} value={o}>
-                {o}
+              <option key={o.value} value={o.value}>
+                {o.label}
               </option>
             ))}
           </select>
@@ -115,8 +115,8 @@ export default function InquiryForm() {
       </div>
 
       <div>
-        <Label htmlFor="message" required>
-          Brief
+        <Label htmlFor="message" required f={f}>
+          {f.message}
         </Label>
         <textarea
           id="message"
@@ -124,7 +124,7 @@ export default function InquiryForm() {
           rows={4}
           required
           className="field resize-none"
-          placeholder="Asset class, jurisdiction, and the decision you are facing."
+          placeholder={f.messagePlaceholder}
           value={values.message}
           onChange={set("message")}
         />
@@ -150,13 +150,13 @@ export default function InquiryForm() {
           disabled={submitting}
           className="shrink-0 bg-fg px-10 py-4 text-sm font-medium tracking-[0.12em] text-surface uppercase transition-opacity hover:opacity-90 disabled:cursor-wait disabled:opacity-60"
         >
-          {submitting ? "Sending…" : "Submit Inquiry"}
+          {submitting ? f.sending : f.submit}
         </button>
       </div>
 
       {status === "error" && (
         <p role="alert" className="text-sm text-fg">
-          Something went wrong while sending. Please try again.
+          {f.error}
         </p>
       )}
     </form>

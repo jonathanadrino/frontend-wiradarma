@@ -5,10 +5,11 @@
  * {
  *   name: string,
  *   entity: string,      // Corporate Entity / Fund Name (required)
- *   aum: string,         // Capital Deployed / AUM (optional, may be "")
- *   nature: string,      // Nature of Inquiry (category)
+ *   aum: string,         // Capital Deployed / AUM (optional, may be ""; always the English value)
+ *   nature: string,      // Nature of Inquiry (category, always the English value)
  *   message: string,     // Details
  *   website: string,     // honeypot — should always be "" for humans
+ *   locale: "en" | "id", // language of the page the visitor used
  * }
  *
  * Must resolve on success and throw (or reject) on failure.

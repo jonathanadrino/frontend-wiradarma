@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { nav, site } from "@/content/site";
+import { site } from "@/content/site";
 import ThemeToggle from "@/components/ThemeToggle";
+import LanguageSwitch from "@/components/LanguageSwitch";
 
-export default function Header() {
+export default function Header({ locale, nav, labels }) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
@@ -26,7 +27,11 @@ export default function Header() {
       raf = 0;
       const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
-      if (trackRef.current) trackRef.current.setAttribute("aria-valuenow", String(Math.round(p * 100)));
+      if (trackRef.current)
+        trackRef.current.setAttribute(
+          "aria-valuenow",
+          String(Math.round(p * 100)),
+        );
       setScrolled(window.scrollY > 24); // bails out when unchanged, so this rarely re-renders
     };
     const onScroll = () => {
@@ -54,7 +59,9 @@ export default function Header() {
 
   // Active section highlight
   useEffect(() => {
-    const sections = nav.map((n) => document.querySelector(n.href)).filter(Boolean);
+    const sections = nav
+      .map((n) => document.querySelector(n.href))
+      .filter(Boolean);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -65,7 +72,7 @@ export default function Header() {
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
-  }, []);
+  }, [nav]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -79,18 +86,28 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 ${
-        solid ? "border-b border-line bg-surface/85 backdrop-blur-xl" : "border-b border-transparent"
+        solid
+          ? "border-b border-line bg-surface/85 backdrop-blur-xl"
+          : "border-b border-transparent"
       }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid h-8 w-8 place-items-center bg-fg font-display text-base text-surface">W</span>
+        <a
+          href="#top"
+          className="flex items-center gap-3"
+          onClick={() => setOpen(false)}
+        >
+          <span className="grid h-8 w-8 place-items-center bg-fg font-display text-base text-surface">
+            W
+          </span>
           <span className="font-display text-xl text-fg">{site.shortName}</span>
-          <span className="eyebrow hidden text-fg-muted sm:inline">Group</span>
+          <span className="eyebrow hidden text-fg-muted sm:inline lg:hidden xl:inline">
+            {labels.group}
+          </span>
         </a>
 
         <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-7 xl:gap-9">
+          <ul className="flex items-center gap-5 xl:gap-9">
             {nav.map((item, i) => {
               const last = i === nav.length - 1;
               const isActive = active === item.href;
@@ -99,7 +116,7 @@ export default function Header() {
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className="eyebrow bg-fg px-5 py-3 text-surface transition-opacity hover:opacity-90"
+                      className="eyebrow bg-fg px-5 py-3 whitespace-nowrap text-surface transition-opacity hover:opacity-90"
                     >
                       {item.label}
                     </a>
@@ -111,7 +128,7 @@ export default function Header() {
                   <a
                     href={item.href}
                     aria-current={isActive ? "true" : undefined}
-                    className={`eyebrow group relative py-2 transition-colors ${
+                    className={`eyebrow group relative py-2 whitespace-nowrap transition-colors ${
                       isActive ? "text-fg" : "text-fg-muted hover:text-fg"
                     }`}
                   >
@@ -125,14 +142,26 @@ export default function Header() {
                 </li>
               );
             })}
-            <li>
-              <ThemeToggle />
+            <li className="flex items-center gap-3">
+              <LanguageSwitch
+                locale={locale}
+                hash={active}
+                label={labels.language}
+                nameClassName="hidden xl:inline"
+              />
+              <ThemeToggle labels={labels} />
             </li>
           </ul>
         </nav>
 
-        <div className="flex items-center gap-5 lg:hidden">
-          <ThemeToggle />
+        <div className="flex items-center gap-4 lg:hidden">
+          <LanguageSwitch
+            locale={locale}
+            hash={active}
+            label={labels.language}
+            className="hidden sm:block"
+          />
+          <ThemeToggle labels={labels} />
           <button
             type="button"
             className="eyebrow flex items-center gap-3 text-fg"
@@ -140,7 +169,7 @@ export default function Header() {
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? "Close" : "Menu"}
+            {open ? labels.close : labels.menu}
             <span className="relative block h-2.5 w-5">
               <span
                 className={`absolute left-0 h-px w-5 bg-fg transition-transform ${open ? "top-1 rotate-45" : "top-0"}`}
@@ -158,7 +187,7 @@ export default function Header() {
         ref={trackRef}
         className="pointer-events-none absolute inset-x-0 -bottom-px h-0.5"
         role="progressbar"
-        aria-label="Page scroll progress"
+        aria-label={labels.progress}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={0}
@@ -186,7 +215,16 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <p className="eyebrow mt-10 px-6 text-fg-subtle">Jakarta · Indonesia</p>
+          <div className="mt-10 flex flex-col items-start gap-8 px-6">
+            <LanguageSwitch
+              locale={locale}
+              hash={active}
+              label={labels.language}
+              align="left"
+              className="sm:hidden"
+            />
+            <p className="eyebrow text-fg-subtle">Jakarta · Indonesia</p>
+          </div>
         </nav>
       )}
     </header>

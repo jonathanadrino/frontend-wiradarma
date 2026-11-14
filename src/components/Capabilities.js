@@ -1,11 +1,11 @@
-import { capabilities } from "@/content/site";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CapabilityIcon from "@/components/visuals/CapabilityIcon";
 import Photo from "@/components/Photo";
 import { photos } from "@/assets/images";
 
-export default function Capabilities() {
+export default function Capabilities({ t }) {
+  const { capabilities } = t;
   return (
     <section id="capabilities" className="bg-surface-2">
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
@@ -22,6 +22,7 @@ export default function Capabilities() {
         <Reveal className="mt-16">
           <Photo
             photo={photos.hBeam}
+            alt={t.alt.hBeam}
             sizes="(min-width: 1280px) 1200px, 100vw"
             tintOpacity={0.5}
             className="aspect-4/3 sm:aspect-3/1"

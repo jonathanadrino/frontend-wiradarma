@@ -14,7 +14,7 @@ function subscribe(callback) {
 const getSnapshot = () => document.documentElement.dataset.theme || "light";
 const getServerSnapshot = () => "light";
 
-export default function ThemeToggle({ className = "" }) {
+export default function ThemeToggle({ labels, className = "" }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const next = theme === "dark" ? "light" : "dark";
 
@@ -31,8 +31,8 @@ export default function ThemeToggle({ className = "" }) {
     <button
       type="button"
       onClick={toggle}
-      aria-label={`Switch to ${next} mode`}
-      title={`Switch to ${next} mode`}
+      aria-label={next === "dark" ? labels.toDark : labels.toLight}
+      title={next === "dark" ? labels.toDark : labels.toLight}
       className={`grid h-9 w-9 place-items-center border border-line text-fg transition-colors hover:border-fg ${className}`}
     >
       {theme === "dark" ? (

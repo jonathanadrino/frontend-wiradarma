@@ -1,11 +1,12 @@
-import { nav, site } from "@/content/site";
+import { site } from "@/content/site";
 
 async function currentYear() {
   "use cache";
   return new Date().getFullYear();
 }
 
-export default async function Footer() {
+export default async function Footer({ t }) {
+  const { nav, footer } = t;
   const year = await currentYear();
   return (
     <footer data-theme="dark" className="relative overflow-hidden border-t border-line bg-surface">
@@ -18,12 +19,12 @@ export default async function Footer() {
               <p className="font-display text-2xl text-fg">{site.name}</p>
             </div>
             <p className="mt-6 max-w-sm leading-relaxed text-fg-muted">
-              Institutional real estate advisory &amp; distressed asset turnarounds in Indonesia.
+              {footer.tagline}
             </p>
           </div>
 
           <nav aria-label="Footer" className="lg:col-span-3 lg:col-start-7">
-            <p className="eyebrow text-fg-subtle">Sections</p>
+            <p className="eyebrow text-fg-subtle">{footer.sections}</p>
             <ul className="mt-6 space-y-3">
               {nav.map((n) => (
                 <li key={n.href}>
@@ -36,12 +37,12 @@ export default async function Footer() {
           </nav>
 
           <div className="lg:col-span-3">
-            <p className="eyebrow text-fg-subtle">Office</p>
+            <p className="eyebrow text-fg-subtle">{footer.office}</p>
             <address className="mt-6 space-y-3 text-fg-muted not-italic">
-              <p>Jakarta, Indonesia</p>
+              <p>{footer.location}</p>
               <p>
                 <a href="#inquiries" className="border-b border-fg/30 pb-0.5 text-fg transition-colors hover:border-fg">
-                  Send an inquiry
+                  {footer.contact}
                 </a>
               </p>
             </address>
@@ -51,13 +52,13 @@ export default async function Footer() {
         {/* Legal bar */}
         <div className="flex flex-col gap-4 border-t border-line py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="eyebrow text-fg-subtle">
-            © {year} {site.name}. All rights reserved.
+            © {year} {site.name}. {footer.rights}
           </p>
           <a
             href="#top"
             className="eyebrow group flex items-center gap-3 text-fg-muted transition-colors hover:text-fg"
           >
-            Back to top
+            {footer.top}
             <span aria-hidden="true" className="transition-transform group-hover:-translate-y-0.5">
               ↑
             </span>

@@ -5,6 +5,7 @@ import Image from "next/image";
 //  - dark:  grayscale + navy multiply; scrims darken toward ink
 export default function Photo({
   photo,
+  alt = photo.alt,
   sizes = "100vw",
   preload = false,
   tintOpacity = 0.45,
@@ -21,7 +22,7 @@ export default function Photo({
       <div className="photo-filter absolute inset-0">
         <Image
           src={photo.src}
-          alt={photo.alt}
+          alt={alt}
           fill
           sizes={sizes}
           preload={preload}

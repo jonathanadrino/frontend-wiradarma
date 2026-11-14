@@ -1,9 +1,9 @@
-import { principal } from "@/content/site";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 
 // Executive Command — written as a plain article: heading, lead, prose, and a quiet fact summary.
-export default function Principal() {
+export default function Principal({ t }) {
+  const { principal } = t;
   return (
     <section id="principal" className="bg-surface-3">
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10 lg:py-36">
@@ -28,7 +28,7 @@ export default function Principal() {
 
           <Reveal delay={220} as="aside" className="lg:col-span-4 lg:col-start-9 lg:pt-28">
             <div className="lg:sticky lg:top-32">
-              <p className="eyebrow text-fg-subtle">Background</p>
+              <p className="eyebrow text-fg-subtle">{principal.summaryLabel}</p>
               <dl className="mt-5 border-t border-line">
                 {principal.summary.map((s) => (
                   <div key={s.label} className="border-b border-line py-4">

@@ -1,10 +1,10 @@
-import { doctrine } from "@/content/site";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
 import { photos } from "@/assets/images";
 
-export default function Doctrine() {
+export default function Doctrine({ t }) {
+  const { doctrine } = t;
   const [lead, rest] = doctrine.paragraphs;
   return (
     <section id="doctrine" className="bg-surface text-fg">
@@ -37,6 +37,7 @@ export default function Doctrine() {
           <Reveal delay={120} className="lg:col-span-5 lg:pt-24">
             <Photo
               photo={photos.contract}
+              alt={t.alt.contract}
               sizes="(min-width: 1024px) 40vw, 100vw"
               tintOpacity={0.35}
               className="aspect-4/3 lg:aspect-4/5"
