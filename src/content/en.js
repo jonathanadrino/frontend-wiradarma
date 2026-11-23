@@ -4,9 +4,9 @@ const en = {
   locale: "en",
 
   meta: {
-    title: "The Wiradarma Group — Institutional Real Estate Advisory, Indonesia",
+    title: "The Wiradarma Group — Strategic Government Relations & Sovereign Risk Mitigation, Indonesia",
     description:
-      "Institutional real estate advisory and distressed asset turnarounds in Indonesia. Executive-level risk mitigation, regulatory navigation, and tactical asset protection for foreign syndicates and family offices.",
+      "Strategic government relations and sovereign risk mitigation in Indonesia. Regulatory alignment, spatial legality, and institutional asset protection for multinationals, defense contractors, and foreign syndicates.",
   },
 
   nav: [
@@ -36,16 +36,16 @@ const en = {
 
   hero: {
     eyebrow: "Jakarta · Indonesia",
-    headline: "Institutional Real Estate Advisory & Distressed Asset Turnarounds in Indonesia.",
+    headline: "Strategic Government Relations & Sovereign Risk Mitigation.",
     // Same headline, broken into the lines that animate in on large screens.
-    headlineLines: ["Institutional Real Estate Advisory", "& Distressed Asset Turnarounds", "in Indonesia."],
+    headlineLines: ["Strategic Government Relations", "& Sovereign Risk Mitigation."],
     stats: [
-      { value: "Rp 400B+", label: "Distressed asset value created by the Principal" },
+      { value: "Rp 400B+", label: "Corporate asset value created by the Principal" },
       { value: "12 Mo.", label: "Minimum engagement" },
       { value: "48 Hrs", label: "Inquiry review window" },
     ],
     subheadline:
-      "We provide executive-level risk mitigation, regulatory navigation, and tactical asset protection for foreign syndicates and family offices.",
+      "We engineer regulatory alignment, spatial legality, and institutional asset protection for multinationals, defense contractors, and foreign syndicates deploying capital in Indonesia.",
     cta: { href: "#inquiries", label: "Inquire on Capabilities" },
   },
 
@@ -53,53 +53,36 @@ const en = {
     eyebrow: "Our Approach",
     header: "The Institutional Shield.",
     paragraphs: [
-      "Foreign capital routinely bleeds in the Indonesian real estate market. Syndicates fail not because of a lack of funds, but due to a failure to master the spatial, regulatory, and human terrain.",
+      "Foreign capital routinely bleeds in the Indonesian market. Institutional syndicates and multinationals fail not because of a lack of funds, but due to a failure to master the regulatory, spatial, and geopolitical terrain.",
       "The Wiradarma Group acts as the executive shield between institutional capital and local market friction. We do not manage daily site operations; we engineer the strategic architecture that guarantees capital survival, strict compliance, and asset liquidity.",
     ],
     tenets: ["Capital Survival", "Strict Compliance", "Asset Liquidity"],
   },
 
   capabilities: {
-    eyebrow: "What We Do",
+    eyebrow: "The Four Pillars",
     header: "Core Capabilities.",
     intro: "Four disciplines, exercised exclusively at the executive level.",
     items: [
       {
-        title: "Distressed Asset Turnarounds",
-        icon: "deed",
-        body: "Tactical acquisition and title-clearing for highly leveraged non-performing loans.",
-        // Spelled out under the description
-        terms: [
-          { abbr: "KPKNL", meaning: "State Asset & Auction Office (Kantor Pelayanan Kekayaan Negara dan Lelang)" },
-        ],
+        title: "Government Relations & Strategic Alignment",
+        icon: "capitol",
+        body: "Peer-to-peer alignment across the executive branch and macroeconomic gatekeepers to clear regulatory friction and structure state-level procurement for global syndicates and defense contractors.",
       },
       {
-        title: "Bureaucratic & Spatial Navigation",
+        title: "Institutional Land Acquisition & Spatial Legality",
         icon: "zoning",
-        body: "Peer-to-peer alignment with BPN, PUPR, and KPP to guarantee KKPR, PBG, and SLF compliance.",
-        terms: [
-          { abbr: "BPN", meaning: "National Land Agency (Badan Pertanahan Nasional)" },
-          { abbr: "PUPR", meaning: "Ministry of Public Works & Housing (Pekerjaan Umum dan Perumahan Rakyat)" },
-          { abbr: "KPP", meaning: "Tax Service Office (Kantor Pelayanan Pajak)" },
-          { abbr: "KKPR", meaning: "Spatial-use conformity (Kesesuaian Kegiatan Pemanfaatan Ruang)" },
-          { abbr: "PBG", meaning: "Building approval (Persetujuan Bangunan Gedung)" },
-          { abbr: "SLF", meaning: "Certificate of occupancy (Sertifikat Laik Fungsi)" },
-        ],
+        body: "Direct integration with state agrarian, spatial planning, and central revenue authorities to guarantee land-use conformity, commercial zoning approvals, and absolute title clearance.",
       },
       {
-        title: "Strategic Risk Mitigation",
+        title: "Corporate Intelligence & Risk Mitigation",
         icon: "reticle",
-        body: "Pre-acquisition intelligence, threat calibration, and high-level dispute resolution to protect asset IRR.",
-        terms: [{ abbr: "IRR", meaning: "Internal rate of return — the asset's projected annual yield" }],
+        body: "Military-grade pre-acquisition reconnaissance to audit local counterparties, map regional political exposure, and sanitize operational perimeters prior to capital deployment.",
       },
       {
-        title: "Institutional Project Command",
-        icon: "beam",
-        body: "Executive oversight enforcing absolute material integrity (Structural Steel, Quadra, YKK AP) and treasury control.",
-        terms: [
-          { abbr: "Materials", meaning: "Structural steel, Quadra stone, YKK AP façade systems" },
-          { abbr: "Treasury", meaning: "Control of project funds and disbursements" },
-        ],
+        title: "Distressed Asset Turnarounds & Capital Rescue",
+        icon: "deed",
+        body: "Tactical acquisition, title-clearing, and executive intervention for highly leveraged non-performing loans, stalled infrastructure, and state-auctioned commercial assets.",
       },
     ],
   },
@@ -107,17 +90,17 @@ const en = {
   principal: {
     eyebrow: "Leadership",
     header: "Executive Command.",
-    body: "The Wiradarma Group is led by its Principal, a former military commander and the current CEO of BML Group, with absolute mastery of the Indonesian regulatory and operational terrain.",
+    body: "The Wiradarma Group is directed by its Principal, a former military commander and the active Chief Executive Officer of a major Indonesian corporate group, possessing absolute mastery of the Indonesian regulatory and geopolitical terrain.",
     // Article body — plain prose built only from the stated credentials
     article: [
-      "The Principal currently serves as Chief Executive Officer of BML Group (PT Bangun Minanga Lestari), leading the development of master-planned townships and over Rp 400 billion in distressed asset value creation to date.",
+      "As the active CEO of BML Group, the Principal scales master-planned developments and directs over Rp 400 billion in corporate asset value creation.",
       "The Principal is a graduate of the Indonesian Military Academy (Akmil, class of 2005) and retired from the Indonesian Army (TNI) with the rank of Infantry Major.",
-      "Academic training includes a Master of Arts in Security Studies, focused on civil-military relations, from the U.S. Naval Postgraduate School in Monterey, California. Advanced strategic training with the U.S. Armed Forces includes Airborne Ranger qualification, the Marine Corps Command and Staff College, and the Combined Strategic Intelligence Training Program.",
+      "Academic training includes a Master of Arts in Security Studies, focused on civil-military relations, from the U.S. Naval Postgraduate School in Monterey, California. Advanced military training includes Airborne Ranger, USMC Command and Staff College, and the Combined Strategic Intelligence Training Program.",
     ],
     // Short factual summary shown beside the article
     summaryLabel: "Background",
     summary: [
-      { label: "Corporate", value: "Chief Executive Officer (current), BML Group (PT Bangun Minanga Lestari)" },
+      { label: "Corporate", value: "Chief Executive Officer, BML Group" },
       { label: "Military", value: "Indonesian Military Academy, Akmil '05 · Retired Infantry Major (TNI)" },
       { label: "Education", value: "M.A. Security Studies, U.S. Naval Postgraduate School" },
       {
@@ -180,16 +163,18 @@ const en = {
     eyebrow: "Contact",
     header: "Private Inquiries.",
     intro:
-      "Tell us briefly who you represent and what you are considering. All inquiries are treated as confidential.",
+      "Tell us briefly who you represent and what you are considering. All inquiries are treated as strictly confidential.",
     stepsLabel: "What happens next",
     steps: ["Send a short brief using the form", "We review it within 48 hours", "If there is a fit, we arrange a call"],
     // `value` is what the API receives (kept in English for both languages); `label` is what visitors see.
     natureOptions: [
-      { value: "Distressed Asset Turnaround (KPKNL)", label: "Distressed Asset Turnaround (KPKNL)" },
-      { value: "Bureaucratic & Spatial Navigation", label: "Bureaucratic & Spatial Navigation" },
-      { value: "Strategic Risk Mitigation", label: "Strategic Risk Mitigation" },
-      { value: "Institutional Project Command", label: "Institutional Project Command" },
-      { value: "Other — Executive Matter", label: "Other — Executive Matter" },
+      {
+        value: "Government Relations / Regulatory Alignment",
+        label: "Government Relations / Regulatory Alignment",
+      },
+      { value: "Spatial Legality / Land Acquisition", label: "Spatial Legality / Land Acquisition" },
+      { value: "Corporate Intelligence / Risk Mitigation", label: "Corporate Intelligence / Risk Mitigation" },
+      { value: "Distressed Asset Turnaround", label: "Distressed Asset Turnaround" },
     ],
     aumOptions: [
       { value: "Under USD 10M", label: "Under USD 10M" },
@@ -220,7 +205,7 @@ const en = {
   },
 
   footer: {
-    tagline: "Institutional real estate advisory & distressed asset turnarounds in Indonesia.",
+    tagline: "Strategic government relations & sovereign risk mitigation in Indonesia.",
     sections: "Sections",
     office: "Office",
     location: "Jakarta, Indonesia",

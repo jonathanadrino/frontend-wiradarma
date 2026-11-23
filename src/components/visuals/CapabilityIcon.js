@@ -1,6 +1,15 @@
 // Thin-line blueprint glyphs, one per capability.
 
 const paths = {
+  // Colonnaded state building — government relations
+  capitol: (
+    <>
+      <path d="M6 20L26 8l20 12z" />
+      <path d="M8 20h36M8 42h36M5 46h42" />
+      <path d="M12 24v14M20 24v14M32 24v14M40 24v14" strokeOpacity="0.6" />
+      <circle cx="26" cy="15" r="1.5" fill="currentColor" />
+    </>
+  ),
   // Title deed with seal — distressed asset / title clearing
   deed: (
     <>

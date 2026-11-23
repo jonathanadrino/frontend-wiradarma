@@ -39,14 +39,16 @@ export default function Capabilities({ t }) {
               </h3>
               <p className="mt-4 max-w-lg text-[17px] leading-relaxed text-fg-muted">{c.body}</p>
 
-              <dl className="mt-6 max-w-lg space-y-2 text-sm leading-relaxed">
-                {c.terms.map((t) => (
-                  <div key={t.abbr} className="flex gap-3">
-                    <dt className="w-20 shrink-0 font-mono font-medium text-fg">{t.abbr}</dt>
-                    <dd className="text-fg-subtle">{t.meaning}</dd>
-                  </div>
-                ))}
-              </dl>
+              {c.terms?.length > 0 && (
+                <dl className="mt-6 max-w-lg space-y-2 text-sm leading-relaxed">
+                  {c.terms.map((t) => (
+                    <div key={t.abbr} className="flex gap-3">
+                      <dt className="w-20 shrink-0 font-mono font-medium text-fg">{t.abbr}</dt>
+                      <dd className="text-fg-subtle">{t.meaning}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
             </Reveal>
           ))}
         </ol>

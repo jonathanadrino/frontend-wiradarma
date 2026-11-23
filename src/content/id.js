@@ -7,9 +7,9 @@ const id = {
   locale: "id",
 
   meta: {
-    title: "The Wiradarma Group — Penasihat Properti Institusional di Indonesia",
+    title: "The Wiradarma Group — Hubungan Pemerintahan Strategis & Mitigasi Risiko Negara di Indonesia",
     description:
-      "Penasihat properti untuk investor institusional dan spesialis pemulihan aset bermasalah di Indonesia. Kami mendampingi family office dan sindikat investor asing dalam mitigasi risiko, perizinan, dan perlindungan aset.",
+      "Hubungan pemerintahan strategis dan mitigasi risiko negara di Indonesia. Keselarasan regulasi, legalitas tata ruang, dan perlindungan aset institusional bagi perusahaan multinasional, kontraktor pertahanan, dan sindikat investor asing.",
   },
 
   nav: [
@@ -38,15 +38,15 @@ const id = {
 
   hero: {
     eyebrow: "Jakarta · Indonesia",
-    headline: "Penasihat Properti Institusional & Pemulihan Aset Bermasalah di Indonesia.",
-    headlineLines: ["Penasihat Properti Institusional", "& Pemulihan Aset Bermasalah", "di Indonesia."],
+    headline: "Hubungan Pemerintahan Strategis & Mitigasi Risiko Negara.",
+    headlineLines: ["Hubungan Pemerintahan Strategis", "& Mitigasi Risiko Negara."],
     stats: [
-      { value: "Rp 400 M+", label: "Nilai tambah dari aset bermasalah yang dihasilkan Pimpinan" },
+      { value: "Rp 400 M+", label: "Nilai aset korporasi yang dihasilkan Pimpinan" },
       { value: "12 Bulan", label: "Kontrak minimum" },
       { value: "48 Jam", label: "Waktu tanggapan atas setiap pertanyaan" },
     ],
     subheadline:
-      "Kami mendampingi family office dan sindikat investor asing langsung di tingkat pimpinan: mengendalikan risiko, mengurus perizinan dan regulasi, serta melindungi aset di lapangan.",
+      "Kami merancang keselarasan regulasi, kepastian legalitas tata ruang, dan perlindungan aset institusional bagi perusahaan multinasional, kontraktor pertahanan, dan sindikat investor asing yang menanamkan modal di Indonesia.",
     cta: { href: "#inquiries", label: "Konsultasikan Kebutuhan Anda" },
   },
 
@@ -54,50 +54,36 @@ const id = {
     eyebrow: "Pendekatan Kami",
     header: "Pelindung Modal Institusional.",
     paragraphs: [
-      "Banyak modal asing yang tergerus di pasar properti Indonesia. Masalahnya jarang soal dana — kebanyakan investor gagal karena tidak menguasai seluk-beluk tata ruang, regulasi, dan dinamika para pihak di lapangan.",
+      "Banyak modal asing yang tergerus di pasar Indonesia. Sindikat institusional dan perusahaan multinasional gagal bukan karena kekurangan dana, melainkan karena tidak menguasai medan regulasi, tata ruang, dan geopolitik.",
       "The Wiradarma Group berdiri di antara modal institusional dan berbagai hambatan di pasar lokal. Kami tidak mengurus operasional proyek sehari-hari; kami menyusun strategi yang memastikan modal tetap aman, seluruh ketentuan hukum terpenuhi, dan aset tetap mudah dicairkan saat dibutuhkan.",
     ],
     tenets: ["Modal Terlindungi", "Patuh Regulasi", "Aset Tetap Likuid"],
   },
 
   capabilities: {
-    eyebrow: "Layanan",
+    eyebrow: "Empat Pilar",
     header: "Layanan Utama.",
-    intro: "Empat bidang keahlian, ditangani langsung oleh pimpinan kami.",
+    intro: "Empat bidang keahlian, ditangani langsung di tingkat pimpinan.",
     items: [
       {
-        title: "Pemulihan Aset Bermasalah",
-        icon: "deed",
-        body: "Akuisisi aset jaminan kredit macet (NPL) bernilai besar, termasuk melalui lelang KPKNL, sekaligus penyelesaian status hukum dan sertifikatnya.",
-        terms: [{ abbr: "KPKNL", meaning: "Kantor Pelayanan Kekayaan Negara dan Lelang" }],
+        title: "Hubungan Pemerintahan & Keselarasan Strategis",
+        icon: "capitol",
+        body: "Koordinasi setara di tingkat pimpinan dengan lembaga eksekutif dan otoritas kebijakan ekonomi makro untuk mengurai hambatan regulasi serta menyusun skema pengadaan tingkat negara bagi sindikat global dan kontraktor pertahanan.",
       },
       {
-        title: "Perizinan & Tata Ruang",
+        title: "Akuisisi Lahan Institusional & Legalitas Tata Ruang",
         icon: "zoning",
-        body: "Koordinasi langsung di tingkat pimpinan dengan BPN, Kementerian PUPR, dan KPP agar KKPR, PBG, dan SLF terbit sesuai ketentuan.",
-        terms: [
-          { abbr: "BPN", meaning: "Badan Pertanahan Nasional" },
-          { abbr: "PUPR", meaning: "Kementerian Pekerjaan Umum dan Perumahan Rakyat" },
-          { abbr: "KPP", meaning: "Kantor Pelayanan Pajak" },
-          { abbr: "KKPR", meaning: "Kesesuaian Kegiatan Pemanfaatan Ruang" },
-          { abbr: "PBG", meaning: "Persetujuan Bangunan Gedung (pengganti IMB)" },
-          { abbr: "SLF", meaning: "Sertifikat Laik Fungsi" },
-        ],
+        body: "Koordinasi langsung dengan otoritas pertanahan, tata ruang, dan perpajakan pusat untuk memastikan kesesuaian pemanfaatan ruang, persetujuan zonasi komersial, dan kepastian penuh atas status hak tanah.",
       },
       {
-        title: "Mitigasi Risiko",
+        title: "Intelijen Korporat & Mitigasi Risiko",
         icon: "reticle",
-        body: "Due diligence sebelum akuisisi, pemetaan risiko dan pihak-pihak yang berkepentingan, serta penyelesaian sengketa di tingkat tinggi untuk menjaga imbal hasil investasi.",
-        terms: [{ abbr: "IRR", meaning: "Internal Rate of Return — tingkat imbal hasil investasi per tahun" }],
+        body: "Penelusuran pra-akuisisi berstandar militer untuk mengaudit mitra lokal, memetakan eksposur politik di daerah, dan mengamankan wilayah operasional sebelum modal ditanamkan.",
       },
       {
-        title: "Pengawasan Proyek",
-        icon: "beam",
-        body: "Pengawasan langsung oleh pimpinan atas mutu material — baja struktural, batu Quadra, YKK AP — serta kendali penuh atas arus kas proyek.",
-        terms: [
-          { abbr: "Material", meaning: "Baja struktural, batu alam Quadra, sistem fasad aluminium YKK AP" },
-          { abbr: "Keuangan", meaning: "Kendali atas dana dan pencairan anggaran proyek" },
-        ],
+        title: "Pemulihan Aset Bermasalah & Penyelamatan Modal",
+        icon: "deed",
+        body: "Akuisisi taktis, penyelesaian status hukum sertifikat, dan intervensi tingkat pimpinan untuk kredit macet (NPL) bernilai besar, proyek infrastruktur yang mangkrak, serta aset komersial hasil lelang negara.",
       },
     ],
   },
@@ -105,15 +91,15 @@ const id = {
   principal: {
     eyebrow: "Pimpinan",
     header: "Profil Pimpinan.",
-    body: "The Wiradarma Group dipimpin oleh seorang mantan perwira TNI yang kini menjabat sebagai CEO BML Group, dengan pemahaman mendalam tentang regulasi dan kondisi lapangan di Indonesia.",
+    body: "The Wiradarma Group dipimpin oleh seorang mantan komandan militer yang kini aktif menjabat sebagai Chief Executive Officer sebuah grup korporasi besar di Indonesia, dengan penguasaan menyeluruh atas medan regulasi dan geopolitik Indonesia.",
     article: [
-      "Saat ini beliau menjabat sebagai Chief Executive Officer BML Group (PT Bangun Minanga Lestari). Di bawah kepemimpinannya, BML Group mengembangkan kawasan perumahan terpadu dan telah menghasilkan nilai lebih dari Rp 400 miliar dari aset-aset bermasalah.",
+      "Sebagai CEO aktif BML Group, beliau memimpin pengembangan kawasan terpadu berskala besar dan mengarahkan penciptaan nilai aset korporasi lebih dari Rp 400 miliar.",
       "Beliau adalah lulusan Akademi Militer (Akmil) angkatan 2005 dan mengakhiri dinas di TNI Angkatan Darat dengan pangkat Mayor Infanteri.",
-      "Beliau meraih gelar Master of Arts di bidang Security Studies dari U.S. Naval Postgraduate School di Monterey, California, dengan fokus pada hubungan sipil-militer. Beliau juga menempuh pendidikan strategis bersama militer Amerika Serikat, antara lain kualifikasi Airborne Ranger, Marine Corps Command and Staff College, dan Combined Strategic Intelligence Training Program.",
+      "Beliau meraih gelar Master of Arts di bidang Security Studies dari U.S. Naval Postgraduate School di Monterey, California, dengan fokus pada hubungan sipil-militer. Pelatihan militer lanjutan yang beliau tempuh antara lain Airborne Ranger, USMC Command and Staff College, dan Combined Strategic Intelligence Training Program.",
     ],
     summaryLabel: "Ringkasan Profil",
     summary: [
-      { label: "Jabatan Saat Ini", value: "CEO BML Group (PT Bangun Minanga Lestari)" },
+      { label: "Korporat", value: "Chief Executive Officer, BML Group" },
       { label: "Militer", value: "Lulusan Akmil 2005 · Mayor Inf. (Purn.) TNI AD" },
       { label: "Pendidikan", value: "M.A. Security Studies, U.S. Naval Postgraduate School" },
       {
@@ -175,7 +161,7 @@ const id = {
     eyebrow: "Kontak",
     header: "Hubungi Kami.",
     intro:
-      "Ceritakan singkat siapa yang Anda wakili dan apa yang sedang Anda rencanakan. Setiap pertanyaan kami jaga kerahasiaannya.",
+      "Ceritakan singkat siapa yang Anda wakili dan apa yang sedang Anda rencanakan. Setiap pertanyaan kami jaga kerahasiaannya sepenuhnya.",
     stepsLabel: "Proses selanjutnya",
     steps: [
       "Kirim ringkasan kebutuhan Anda melalui formulir",
@@ -184,11 +170,13 @@ const id = {
     ],
     // Values stay in English so the API receives the same data from both languages.
     natureOptions: [
-      { value: "Distressed Asset Turnaround (KPKNL)", label: "Pemulihan Aset Bermasalah (KPKNL)" },
-      { value: "Bureaucratic & Spatial Navigation", label: "Perizinan & Tata Ruang" },
-      { value: "Strategic Risk Mitigation", label: "Mitigasi Risiko" },
-      { value: "Institutional Project Command", label: "Pengawasan Proyek" },
-      { value: "Other — Executive Matter", label: "Lainnya" },
+      {
+        value: "Government Relations / Regulatory Alignment",
+        label: "Hubungan Pemerintahan / Keselarasan Regulasi",
+      },
+      { value: "Spatial Legality / Land Acquisition", label: "Legalitas Tata Ruang / Akuisisi Lahan" },
+      { value: "Corporate Intelligence / Risk Mitigation", label: "Intelijen Korporat / Mitigasi Risiko" },
+      { value: "Distressed Asset Turnaround", label: "Pemulihan Aset Bermasalah" },
     ],
     aumOptions: [
       { value: "Under USD 10M", label: "Di bawah USD 10 juta" },
@@ -219,7 +207,7 @@ const id = {
   },
 
   footer: {
-    tagline: "Penasihat properti institusional dan pemulihan aset bermasalah di Indonesia.",
+    tagline: "Hubungan pemerintahan strategis dan mitigasi risiko negara di Indonesia.",
     sections: "Menu",
     office: "Kantor",
     location: "Jakarta, Indonesia",
